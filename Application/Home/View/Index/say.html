@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="__PUBLIC__/js/jquery.js">
+	<link rel="stylesheet" href="/Public/js/jquery1.js">
+	<style>
+		.first {width:100px;height:100px;background:#ff0;margin-top:10px;}
+	</style>
+</head>
+<body>
+<literal>
+    <if condition="$name eq 1 "> value1
+    <elseif condition="$name eq 2"/>value2
+        <else /> value3
+    </if>
+</literal>
+	<a href="{:U('home/index/test')}">测试</a>
+	<div>__PUBLIC__</div>
+	<div class="first"></div>
+	<div class="first">{$c}</div>
+	
+	<foreach name="arr" item="v"  key="k">
+    	<div class="first">{$k}{$v}</div>
+	</foreach>
+	<?php foreach($arr as $vo) { ?>
+		<div class="first">{$vo}</div>
+	<?php } ?>
+</body>
+</html>
