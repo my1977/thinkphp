@@ -1,5 +1,6 @@
 <include file="Public/header" />
 <div class="col-lg-12 col-sm-12 row">
+    <div><a href="{:U('admin/user/add')}" class="btn">新增</a></div>
     <table class="table">
         <tr>
             <td>Id</td>
@@ -20,7 +21,10 @@
             <td>{$vo['sex'] == 1?'男' :'女'}</td>
             <td>{$vo.address}</td>
             <td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
-            <td><a href="">删除</a></td>
+            <td>
+                <a href="{:U('admin/user/update',array('id'=>$vo['id']))}">修改</a>
+                <a href="{:U('admin/user/del',array('id'=>$vo['id']))}">删除</a>
+            </td>
         </tr>
         </foreach>
     </table>
