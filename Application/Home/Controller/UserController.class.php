@@ -46,10 +46,11 @@ class UserController extends Controller {
         $config =    array(
             'fontSize'    =>    30,    // 验证码字体大小
             'length'      =>    3,     // 验证码位数
-            'useNoise'    =>    false, // 关闭验证码杂点
+            'useNoise'    =>    true, // 关闭验证码杂点
+            'codeSet'=>'abcde',
         );
         $Verify = new \Think\Verify($config);
-        $Verify->codeSet = '0123456789'; 
+        //$Verify->codeSet = '0123456789'; 
         $Verify->entry();
     }
     public function check_verify($code, $id = ''){
