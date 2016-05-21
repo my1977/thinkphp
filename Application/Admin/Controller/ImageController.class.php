@@ -49,6 +49,19 @@ class ImageController extends Controller {
 
     public function handleUpdate(){
     	$id = I('post.id',0);
+        if ($_FILES['pic']['name']) {
+            $upload = new \Think\Upload();// 实例化上传类
+            $upload->maxSize   =     3145728 ;// 设置附件上传大小
+            $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+            $upload->rootPath  =     './Public/'; // 设置附件上传根目录
+            $upload->savePath  =     'upload/'; // 设置附件上传（子）目录
+            // 上传文件 
+            $info   =   $upload->upload();
+            $pic = $info['pic']['savepath'].$info['pic']['savename'];
+            $_POST['pic'] = $pic;
+        }
+            
+        $_POST['update_time'] = time();
     	M('Images')->create();
     	M('Images')->where("id = $id")->save();
     	$this->success('修改成功',U('admin/image/index'));

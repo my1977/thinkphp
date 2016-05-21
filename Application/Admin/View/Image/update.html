@@ -1,0 +1,11 @@
+<include file="Public/header" />
+<div class="col-lg-12 col-sm-12 row">
+    <form action="{:U('admin/image/handleUpdate')}" method="post" enctype="multipart/form-data">
+    	名称: <input type="text" name="name" value="{$images_info.name}"><br>
+    	<img src="__PUBLIC__/{$images_info.pic}" alt="" width="200px" height="200px"><br>
+        图像: <input type="file" name="pic"><br>
+        <input type="hidden" name="id" value="{$images_info.id}">
+        <input type="submit">
+    </form>
+</div>
+<include file="Public/footer" />
