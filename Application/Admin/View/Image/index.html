@@ -1,0 +1,38 @@
+<include file="Public/header" />
+<div class="col-lg-12 col-sm-12 row">
+    <div><a href="{:U('admin/image/add')}" class="btn">新增</a></div>
+    <table class="table">
+        <tr>
+            <td>Id</td>
+            <td>name</td>
+            <td>图片地址</td>
+            <td>图片</td>
+            <td>创建时间</td>
+            <td>操作</td>
+        </tr>
+        <foreach name="user" item="vo">
+        <tr>
+            <td>{$vo.id}</td>
+            <td>{$vo.name}</td>
+            <td>{$vo.pic}</td>
+            <td><img src="__PUBLIC__/{$vo.pic}" alt="" width="100px" height="100px"></td>
+            <td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
+            <td>
+                <a href="{:U('admin/image/update',array('id'=>$vo['id']))}">修改</a>
+                <a href="{:U('admin/image/del',array('id'=>$vo['id']))}">删除</a>
+            </td>
+        </tr>
+        </foreach>
+    </table>
+    <div class="page">{$page}</div>
+</div>
+<style>
+.page .current{background-color:rgba(0,255,150,0.5);}
+.page .prev,.num,.next,.current{width:auto;height:auto;margin:4px;padding:3px 3px;box-shadow:0 0 2px rgba(0,0,0,0.2);background-color:rgba(255,255,255,0.1);}
+</style>
+<script>
+    $(function(){
+        //$('.page').find('div').children().addClass('btn').addClass('btn_default');
+    })
+</script>
+<include file="Public/footer" />
