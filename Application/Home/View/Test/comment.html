@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	</style>
+</head>
+<body>
+	<p>
+		php学习方法
+	</p>
+	<p>评论</p>
+	<div>
+		<foreach name='list' item='v'>
+		<div style="margin-top:10px;margin-bottom:10px;border:1px solid #ccc">
+			<p>{$v.content}</p>
+			<?php if(!empty($v['child'])) { ?>
+				<div style="margin-left:10px">
+					 	<?php foreach($v['child'] as $vo){ ?>
+						<div style="margin-top:10px;margin-bottom:10px;border:1px solid #ccc">
+							<p>{$vo.content}</p>
+						</div>
+						<?php } ?>
+				</div>
+			<?php } ?>
+			<p><a href="{:U('home/test/addComment',array('id'=>$v['id']))}">回复</a>
+				<form action="{:U('Home/Test/addComment')}" method="post" class="hide">
+					<input type="hidden" name='parent_id' value="{$v.id}">
+					<textarea name="content" id="" cols="30" rows="3"></textarea>
+					<br>
+					<input type="submit">
+				</form>
+			</p>
+		</div>
+		
+		</foreach>
+	</div>
+	<form action="{:U('Home/Test/addComment')}" method="post">
+		<textarea name="content" id="" cols="30" rows="10"></textarea>
+		<br>
+		<input type="submit">
+	</form>
+</body>
+</html>

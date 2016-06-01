@@ -32,7 +32,7 @@ class TestController extends Controller
 		$area = F('area');
 		if (!is_array($area) || empty($area)) {
 			$area = M('Areas')->select();
-			$area = getTree($area);
+			$area = getTree($area,0,'area_id');
 			F('area',$area);
 		}
 			
@@ -44,5 +44,42 @@ class TestController extends Controller
 	function maying(){
 		//F('maying','love php');
 		echo F('maying');
+	}
+
+	function comment(){
+		$article_id = 5;
+		$where['article_id'] = $article_id;
+		$list = M('Comment')->where()->select();
+		$list = getTree($list);
+		$this->assign('list',$list);
+		$this->display();
+	}
+	function addComment(){
+		$data['parent_id'] = I('post.parent_id',0);
+		$data['content'] = I('post.content');
+		$data['user_id'] = 18;
+		$data['article_id'] = 5;
+		$data['create_time'] = time();
+		M('Comment')->add($data);
+		$this->success('success',U('home/test/comment'));
+	}
+
+	function um(){
+		$this->display();
+	}
+
+	function handleUe(){
+		$_POST['create_time'] = time();
+		M('blog')->create();
+		$id = M('blog')->add();
+		$this->success('success',U('home/test/ueDetail',array('id'=>$id)));
+	}
+	function ueList(){
+		$this->display();
+	}
+	function ueDetail(){
+		$detail = M('blog')->where(array('id'=>I('get.id')))->find();
+		$this->assign('detail',$detail);
+		$this->display();
 	}
 }
