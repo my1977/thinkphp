@@ -1,0 +1,15 @@
+<include file="Public/header" />
+<div class="col-lg-12 col-sm-12 row">
+    <form action="{:U('admin/rbac/storeadmin')}" method="post">
+    	email: <input type="text" name="email"><br>
+        password: <input type="text" name="password"><br>
+        role: <select name="role_id">
+        			<foreach name="rolelist" item="vo">
+        			<option value="{$vo.id}">{$vo.name}</option>
+        			</foreach>
+        		</select>
+        <br>
+        <input type="submit">
+    </form>
+</div>
+<include file="Public/footer" />

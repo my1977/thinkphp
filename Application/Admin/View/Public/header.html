@@ -40,7 +40,11 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+    <style type="text/css">
+        .accordion > ul {
+            display:block !important;
+        }
+    </style>
     <!-- The fav icon -->
     <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -149,10 +153,11 @@
                         <li><a class="ajax-link" href="table.html"><i
                                     class="glyphicon glyphicon-align-justify"></i><span> Tables</span></a></li>
                         <li class="accordion">
-                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> Accordion Menu</span></a>
+                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> RBAC</span></a>
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#">Child Menu 1</a></li>
-                                <li><a href="#">Child Menu 2</a></li>
+                                <li><a href="{:U('admin/rbac/nodelist')}">节点管理</a></li>
+                                <li><a href="{:U('admin/rbac/rolelist')}">角色管理</a></li>
+                                <li><a href="{:U('admin/rbac/adminlist')}">用户管理</a></li>
                             </ul>
                         </li>
                         <li><a class="ajax-link" href="calendar.html"><i class="glyphicon glyphicon-calendar"></i><span> Calendar</span></a>
